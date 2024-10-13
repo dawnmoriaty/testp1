@@ -16,9 +16,15 @@ nltk.download('stopwords')
 
 # Tự tạo danh sách stopwords cho tiếng Việt
 vietnamese_stopwords = {
-    'và', 'là', 'của', 'những', 'đã', 'có', 'không', 'với', 'cho', 'cũng',
-    'như', 'này', 'đó', 'mà', 'ở', 'để', 'khi', 'thì', 'ra', 'tại', 'được',
-    'nhưng', 'một', 'cái', 'vào', 'trên', 'đang', 'tôi', 'bạn', 'anh', 'em', 'gì'
+    # ... các từ bạn đã có
+    'ta', 'mình', 'chúng ta', 'chúng mình', 'của tôi', 'của mình', 'của chúng ta', 'của chúng mình',
+    'họ', 'chúng', 'của họ', 'của chúng', 'nó', 'của nó',
+    'nay', 'hôm nay', 'hôm qua', 'ngày mai', 'sáng', 'trưa', 'chiều', 'tối', 'lúc', 'khi', 'trước', 'sau', 'rồi', 'sớm',
+    'muộn',
+    'đây', 'đó', 'này', 'kia', 'đâu', 'nào', 'đến', 'từ', 'qua', 'lên', 'xuống',
+    'thôi', 'nào', 'mà', 'chứ', 'nhé', 'à', 'ơi',
+    'ôi', 'a', 'hay', 'quá', 'lắm', 'thật',
+    'nhiều', 'ít', 'mấy', 'một số', 'các'
 }
 
 
@@ -77,11 +83,14 @@ def build_and_evaluate_model(data, language):
     precision = precision_score(y_test, y_pred, pos_label='spam')
     recall = recall_score(y_test, y_pred, pos_label='spam')
     f1 = f1_score(y_test, y_pred, pos_label='spam')
-
     print(f'Results for {language} model:')
+    # Accuracy: Cho biết tỷ lệ tổng thể các email được phân loại đúng.
     print(f'Accuracy: {accuracy}')
+    # Precision: Cho biết khi mô hình dự đoán một email là spam, thì xác suất nó thực sự là spam là bao nhiêu.
     print(f'Precision: {precision}')
+    #Recall: Cho biết tỷ lệ các email spam thực tế được mô hình phát hiện ra.
     print(f'Recall: {recall}')
+    #F1-score: Là một chỉ số tổng hợp, cân bằng giữa precision và recall, thường được sử dụng để đánh giá hiệu suất của mô hình phân loại.
     print(f'F1 Score: {f1}')
     print()
 
