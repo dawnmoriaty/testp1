@@ -107,21 +107,21 @@ model_en, vectorizer_en = build_and_evaluate_model(data_en, 'English')
 # Xây dựng và đánh giá mô hình cho tiếng Việt
 model_vi, vectorizer_vi = build_and_evaluate_model(data_vi, 'Vietnamese')
 
-# Hàm để phân loại email mới
-def classify_email(email_text, language):
-    if language == 'english':
-        preprocessed_text = preprocess_text(email_text, 'english')
-        vectorized_text = vectorizer_en.transform([preprocessed_text])
-        prediction = model_en.predict(vectorized_text)
-    elif language == 'vietnamese':
-        preprocessed_text = preprocess_text(email_text, 'vietnamese')
-        vectorized_text = vectorizer_vi.transform([preprocessed_text])
-        prediction = model_vi.predict(vectorized_text)
-    else:
-        return "Unsupported language"
+# # Hàm để phân loại email mới
+# def classify_email(email_text, language):
+#     if language == 'english':
+#         preprocessed_text = preprocess_text(email_text, 'english')
+#         vectorized_text = vectorizer_en.transform([preprocessed_text])
+#         prediction = model_en.predict(vectorized_text)
+#     elif language == 'vietnamese':
+#         preprocessed_text = preprocess_text(email_text, 'vietnamese')
+#         vectorized_text = vectorizer_vi.transform([preprocessed_text])
+#         prediction = model_vi.predict(vectorized_text)
+#     else:
+#         return "Unsupported language"
 
-    return "spam" if prediction[0] == 'spam' else "ham"
+#     return "spam" if prediction[0] == 'spam' else "ham"
 
-# Ví dụ sử dụng
-print(classify_email("This is a test email in English", "english"))
-print(classify_email("Đây là một email thử nghiệm bằng tiếng Việt", "vietnamese"))
+# # Ví dụ sử dụng
+# print(classify_email("This is a test email in English", "english"))
+# print(classify_email("Đây là một email thử nghiệm bằng tiếng Việt", "vietnamese"))
